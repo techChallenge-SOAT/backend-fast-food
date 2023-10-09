@@ -1,0 +1,27 @@
+version: '3'
+services:
+  # Contêiner do PostgreSQL
+  postgres:
+    image: postgres:latest
+    environment:
+      POSTGRES_DB: nome_do_banco  # Substitua pelo nome do seu banco de dados
+      POSTGRES_USER: usuario      # Substitua pelo nome do usuário do banco de dados
+      POSTGRES_PASSWORD: senha    # Substitua pela senha do usuário
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  # Contêiner da sua aplicação JavaScript
+  app:
+    build:
+      context: ./sua_aplicacao  # Substitua pelo caminho para a pasta da sua aplicação
+    ports:
+      - "3000:3000"  # Substitua pela porta em que sua aplicação está rodando
+    depends_on:
+      - postgres
+    environment:
+      DATABASE_URL: postgres://usuario:senha@postgres:5432/nome_do_banco  # Substitua pelas informações corretas
+
+volumes:
+  postgres_data:
