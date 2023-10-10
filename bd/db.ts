@@ -1,4 +1,6 @@
-const pgp = require('pg-promise')();
+import db from 'pg-promise';
+
+const pgp = db();
 const connection = {
   host: 'localhost',
   port: 5432,
@@ -7,6 +9,6 @@ const connection = {
   password: 'password',
 };
 
-const db = pgp(connection);
+const dbInstance = pgp(connection);
 
-module.exports = db;
+export default dbInstance;

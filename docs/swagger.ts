@@ -1,4 +1,6 @@
-const swaggerAutogen = require('swagger-autogen')();
+import swaggerAutogenFactory from 'swagger-autogen';
+
+const swaggerAutogen = swaggerAutogenFactory();
 
 const doc = {
   info: {
@@ -6,13 +8,13 @@ const doc = {
     description:
       'Documentação das APIs criadas para o sistema de gerenciamento de fast food',
   },
-  host: 'localhost:8000',
+  host: 'localhost:3000',
   schemes: ['http'],
 };
 
-const outputFile = './path/swagger-output.json';
-const endpointsFiles = ['./index.js'];
+const outputFile = './swagger-output.json';
+const endpointsFiles = ['../src/index.ts'];
 
 swaggerAutogen(outputFile, endpointsFiles, doc).then(() => {
-  require('../index.js');
+  require('../src/index.ts');
 });
