@@ -1,20 +1,23 @@
-# Use uma imagem base adequada para a sua aplicação. Neste exemplo, usamos uma imagem Python como base.
-FROM node:20-slim
+# Use a imagem oficial do Node.js como imagem base
+FROM node:18-alpine3.18
 
-# Define o diretório de trabalho dentro do contêiner
-WORKDIR /app
+# Crie um diretório de trabalho no contêiner
+WORKDIR /usr/src/app
 
-# Copia os arquivos necessários para o diretório de trabalho
-COPY . /app/
+# Copie o arquivo de dependências (package.json) e o arquivo de bloqueio de dependências (package-lock.json)
+COPY package*.json ./
 
-# Instala as dependências da sua aplicação
+# Instale as dependências da aplicação
 RUN npm install
 
-# Compila a aplicação
+# Copie todos os arquivos do projeto para o diretório de trabalho no contêiner
+COPY . .
+
+# Compile o código TypeScript para JavaScript
 RUN npm run build
 
-# Expõe a porta que sua aplicação estará ouvindo
+# Exponha a porta em que o aplicativo será executado
 EXPOSE 3000
 
-# Comando para iniciar a sua aplicação (ajuste de acordo com o seu aplicativo)
+# Comando para iniciar a aplicação
 CMD ["npm", "start"]
