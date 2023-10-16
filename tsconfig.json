@@ -9,7 +9,7 @@
     "skipLibCheck": true,
     "lib": ["es2017", "dom", "es2018.promise"],
     "paths": {
-      "@db/*": ["./bd/*"],
+      "@db/*": ["configs/*"],
       "@docs/*": ["./docs/*"]
     },
     "baseUrl": "./",
