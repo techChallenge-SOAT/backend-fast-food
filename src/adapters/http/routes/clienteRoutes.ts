@@ -1,40 +1,36 @@
-import express from 'express';
-import { AdicionarClienteUseCase } from 'src/application/useCases/cliente/AdicionarClienteUseCase'; // Importe os casos de uso apropriados
-import { BuscarClientePorCPFUseCase } from 'src/application/useCases/cliente/BuscarClientePorCPFUseCase';
-import { Request, Response } from 'express';
-import { Cliente } from 'src/domain/models/Cliente';
-import ClienteRepository from 'src/adapters/postgres/cliente/ClienteRepository';
+import express, { Request, Response } from 'express';
+import { AdicionarClienteUseCase } from 'src/application/useCases/cliente/AdicionarClienteUseCase';
+import { ClienteUseCase } from 'src/application/useCases/cliente/ClienteUseCase';
 
-const clienteRouter = express.Router();
-const clienteRepo = new ClienteRepository(); // Crie uma instância do ClienteRepository
-const adicionarClienteUseCase = new AdicionarClienteUseCase(clienteRepo); // Passe o clienteRepo como argumento
-const buscarClientePorCPFUseCase = new BuscarClientePorCPFUseCase(clienteRepo); // Passe o clienteRepo como argumento
+const router = express.Router();
 
-// Rota para adicionar um novo cliente
-clienteRouter.post('/criar', async (req: Request, res: Response) => {
+// Rota para adicionar um cliente
+router.post('/', async (req: Request, res: Response) => {
+  const { cpf, nome, email, senha } = req.body;
+
   try {
-    const { cpf, nome, email, senha } = req.body;
-    const clienteData: Cliente = { cpf, nome, email, senha };
-    const novoCliente = await adicionarClienteUseCase.executar(clienteData);
-    res.json(novoCliente);
+    const cliente = await AdicionarClienteUseCase.execute(cpf, nome, email, senha);
+    return res.status(201).json(cliente);
   } catch (error) {
-    res.status(500).json({ error: 'Erro ao adicionar o cliente' });
+    return res.status(500).json({ message: 'Erro ao adicionar o cliente.' });
   }
 });
 
-// Rota para buscar um cliente por CPF
-clienteRouter.get('/consultar/:cpf', async (req: Request, res: Response) => {
+// Rota para buscar um cliente pelo CPF
+router.get('/:cpf', async (req: Request, res: Response) => {
+  const cpf = req.params.cpf;
+
   try {
-    const cpf = req.params.cpf;
-    const cliente = await buscarClientePorCPFUseCase.executar(cpf);
+    const cliente = await ClienteUseCase.buscarClientePorCPF(cpf);
+
     if (cliente) {
-      res.json(cliente);
+      return res.json(cliente);
     } else {
-      res.status(404).json({ error: 'Cliente não encontrado' });
+      return res.status(404).json({ message: 'Cliente não encontrado.' });
     }
   } catch (error) {
-    res.status(500).json({ error: 'Erro ao buscar o cliente' });
+    return res.status(500).json({ message: 'Erro ao buscar o cliente.' });
   }
 });
 
-export default clienteRouter;
+export default router;
