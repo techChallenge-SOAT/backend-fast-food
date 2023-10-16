@@ -1,5 +1,5 @@
 import { DataTypes, Model } from 'sequelize';
-import sequelize from '../../config/database'; // Importa a instância do Sequelize a partir da pasta config
+import sequelize from '../../../configs/database';
 
 class ClienteModel extends Model {
   public cpf!: string;
