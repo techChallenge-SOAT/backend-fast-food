@@ -1,14 +1,10 @@
 import { ClienteRepository } from 'src/adapters/postgres/cliente/ClienteRepository';
-import { Cliente } from '../../../domain/models/Cliente';
 
 export class BuscarClientePorCPFUseCase {
-  constructor(private clienteRepository: typeof ClienteRepository) {}
-
-  async execute(cpf: string): Promise<Cliente | null> {
+  static async buscarClientePorCPF(cpf: string) {
     try {
-      const cliente = await this.clienteRepository.buscarClientePorCPF(cpf);
-
-      return cliente || null; 
+      const cliente = await ClienteRepository.buscarClientePorCPF(cpf);
+      return cliente;
     } catch (error) {
       throw error;
     }

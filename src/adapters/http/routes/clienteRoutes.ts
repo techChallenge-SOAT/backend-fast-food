@@ -1,6 +1,6 @@
 import express, { Request, Response } from 'express';
 import { AdicionarClienteUseCase } from 'src/application/useCases/cliente/AdicionarClienteUseCase';
-import { ClienteUseCase } from 'src/application/useCases/cliente/ClienteUseCase';
+import { BuscarClientePorCPFUseCase } from 'src/application/useCases/cliente/BuscarClientePorCPFUseCase';
 
 const router = express.Router();
 
@@ -21,7 +21,7 @@ router.get('/:cpf', async (req: Request, res: Response) => {
   const cpf = req.params.cpf;
 
   try {
-    const cliente = await ClienteUseCase.buscarClientePorCPF(cpf);
+    const cliente = await BuscarClientePorCPFUseCase.buscarClientePorCPF(cpf);
 
     if (cliente) {
       return res.json(cliente);
