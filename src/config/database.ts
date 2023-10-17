@@ -6,7 +6,7 @@ const sequelize = new Sequelize({
   port: 5432,
   username: 'user',
   password: 'password',
-  database: 'sistema-pedidos',
+  database: 'sistema-clientes-pedidos',
 });
 
 export default sequelize;
