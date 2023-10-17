@@ -23,4 +23,13 @@ export class ClienteRepository {
       throw error;
     }
   }
+
+  static async buscarTodosClientes() {
+    try {
+      const clientes = await Cliente.findAll();
+      return clientes;
+    } catch (error) {
+      throw error;
+    }
+  }
 }

@@ -1,5 +1,5 @@
 import { Model, DataTypes } from 'sequelize';
-import sequelize from 'src/config/database';
+import sequelize from '../../../config/database';
 
 export class Cliente extends Model {
   public cpf!: string;
