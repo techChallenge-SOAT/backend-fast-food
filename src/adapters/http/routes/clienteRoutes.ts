@@ -21,7 +21,7 @@ router.get('/:cpf', async (req: Request, res: Response) => {
   const cpf = req.params.cpf;
 
   try {
-    const cliente = await BuscarClientePorCPFUseCase.buscarClientePorCPF(cpf);
+    const cliente = await BuscarClientePorCPFUseCase.execute(cpf);
 
     if (cliente) {
       return res.json(cliente);
