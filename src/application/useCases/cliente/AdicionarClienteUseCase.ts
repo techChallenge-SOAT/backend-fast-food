@@ -1,3 +1,4 @@
+/* eslint-disable no-useless-catch */
 import { ClienteRepository } from '../../../adapters/postgres/cliente/ClienteRepository';
 
 export class AdicionarClienteUseCase {
@@ -6,7 +7,12 @@ export class AdicionarClienteUseCase {
     return clienteExistente !== null;
   }
 
-  static async execute(cpf: string, nome: string, email: string, senha: string) {
+  static async execute(
+    cpf: string,
+    nome: string,
+    email: string,
+    senha: string,
+  ) {
     try {
       const cpfJaExiste = await this.cpfExiste(cpf);
 
@@ -14,11 +20,15 @@ export class AdicionarClienteUseCase {
         throw new Error('CPF já está cadastrado.');
       }
 
-      const cliente = await ClienteRepository.adicionarCliente(cpf, nome, email, senha);
+      const cliente = await ClienteRepository.adicionarCliente(
+        cpf,
+        nome,
+        email,
+        senha,
+      );
       return cliente;
     } catch (error) {
       throw error;
     }
   }
 }
-

@@ -1,7 +1,13 @@
+/* eslint-disable no-useless-catch */
 import { Cliente } from './ClienteModel';
 
 export class ClienteRepository {
-  static async adicionarCliente(cpf: string, nome: string, email: string, senha: string) {
+  static async adicionarCliente(
+    cpf: string,
+    nome: string,
+    email: string,
+    senha: string,
+  ) {
     try {
       const cliente = await Cliente.create({
         cpf,

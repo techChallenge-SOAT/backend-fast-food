@@ -32,5 +32,5 @@ Cliente.init(
     sequelize,
     modelName: 'Cliente',
     timestamps: false,
-  }
+  },
 );
