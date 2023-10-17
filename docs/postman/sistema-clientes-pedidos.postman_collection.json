@@ -1,0 +1,75 @@
+{
+	"info": {
+		"_postman_id": "43d83b54-abe1-46b9-98d7-c4e0467e54a9",
+		"name": "sistema-clientes-pedidos",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "19858656"
+	},
+	"item": [
+		{
+			"name": "clientes",
+			"item": [
+				{
+					"name": "clientes",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"pm.environment.set(\"cpf\", \"\");",
+									"pm.environment.set(\"nome\", \"\");",
+									"pm.environment.set(\"email\", \"\");",
+									"pm.environment.set(\"senha\", \"\");"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"cpf\":{{cpf}},\n    \"nome\": {{nome}},\n    \"email\": {{email}},\n    \"senha\": {{senha}}\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "localhost:3000/clientes"
+					},
+					"response": []
+				},
+				{
+					"name": "clientes/cpf",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"pm.environment.set(\"cpf\", \"\");"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "localhost:3000/clientes/{{cpf}}"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "pedidos",
+			"item": []
+		},
+		{
+			"name": "itens",
+			"item": []
+		}
+	]
+}

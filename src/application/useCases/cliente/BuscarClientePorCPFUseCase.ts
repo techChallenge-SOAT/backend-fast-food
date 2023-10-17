@@ -1,4 +1,4 @@
-import { ClienteRepository } from 'src/adapters/postgres/cliente/ClienteRepository';
+import { ClienteRepository } from '../../../adapters/postgres/cliente/ClienteRepository';
 
 export class BuscarClientePorCPFUseCase {
 
