@@ -50,5 +50,8 @@
   "directories": {
     "doc": "docs"
   },
-  "keywords": []
+  "keywords": [],
+  "engines": {
+    "node": ">=20.8.1"
+  }
 }
