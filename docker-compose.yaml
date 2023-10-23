@@ -11,19 +11,19 @@ services:
     volumes:
       - postgres_data:/var/lib/postgresql/data
 
-  # app:
-  #   build:
-  #     context: .
-  #     dockerfile: Dockerfile
-  #   ports:
-  #     - '3000:3000'
-  #   volumes:
-  #     - .:/app
-  #   command: npm start
-  #   depends_on:
-  #     - postgres
-  #   environment:
-  #     DATABASE_URL: postgres://user:password@postgres:5432/bd-clientes-pedidos
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - '3000:3000'
+    volumes:
+      - .:/app
+    command: npm start
+    depends_on:
+      - postgres
+    environment:
+      DATABASE_URL: postgres://user:password@postgres:5432/bd-clientes-pedidos
 
 volumes:
   postgres_data:
