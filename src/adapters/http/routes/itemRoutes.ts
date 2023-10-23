@@ -1,8 +1,9 @@
 import express, { Request, Response } from 'express';
-import { CriarItemUseCase } from '../../../application/useCases/item/CriarItemUseCase';
 import logger from '../../../config/logger';
-import { BuscarItemPorIDUseCase } from 'src/application/useCases/item/BuscarItemPorIDUseCase';
-import { BuscarItensUseCase } from 'src/application/useCases/item/BuscarItensUseCase';
+import { CriarItemUseCase } from '../../../application/useCases/item/CriarItemUseCase';
+import { BuscarItemPorIDUseCase } from '../../../application/useCases/item/BuscarItemPorIDUseCase';
+import { BuscarItensUseCase } from '../../../application/useCases/item/BuscarItensUseCase';
+import Item from '../../../application/valueObjects/Item';
 
 const router = express.Router();
 
@@ -12,14 +13,11 @@ router.post('/', async (req: Request, res: Response) => {
   const descricao = String(req.body.descricao);
   const preco_unitario = Number(req.body.preco_unitario);
 
+  const item = new Item(categoria, nome, descricao, preco_unitario);
+
   try {
-    const cliente = await CriarItemUseCase.execute(
-      categoria,
-      nome,
-      descricao,
-      preco_unitario,
-    );
-    return res.status(201).json(cliente);
+    const item_criado = await CriarItemUseCase.execute(item);
+    return res.status(201).json({ message: 'Sucesso', item: item_criado });
   } catch (error) {
     logger.info(error);
     return res.status(500).json({ message: 'Erro ao adicionar o cliente.' });

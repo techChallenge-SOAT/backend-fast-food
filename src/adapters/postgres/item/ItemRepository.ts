@@ -1,17 +1,13 @@
-import { Item as ItemModel } from './ItemModel';
+import Item from 'src/application/valueObjects/Item';
+import { Item as ItemModel } from '../pedido/models';
 
 export class ItemRepository {
-  static async criar(
-    categoria: string,
-    nome: string,
-    descricao: string,
-    preco_unitario: number,
-  ) {
+  static async criar(item: Item) {
     return await ItemModel.create({
-      categoria,
-      nome,
-      descricao,
-      preco_unitario,
+      categoria: item.categoria,
+      nome: item.nome,
+      descricao: item.descricao,
+      preco_unitario: item.preco_unitario,
     });
   }
 
