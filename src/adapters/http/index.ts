@@ -1,6 +1,8 @@
 import express from 'express';
 import bodyParser from 'body-parser';
 import clienteRoutes from './routes/clienteRoutes';
+import itemRoutes from './routes/itemRoutes';
+import pedidoRoutes from './routes/pedidoRoutes';
 import logger from '../../config/logger';
 
 const app = express();
@@ -10,6 +12,10 @@ app.use(bodyParser.json());
 
 // Defina as rotas, middleware e outras configurações necessárias aqui
 app.use('/clientes', clienteRoutes);
+
+app.use('/itens', itemRoutes);
+
+app.use('/pedidos', pedidoRoutes);
 
 app.get('/', (req, res) => {
   logger.info('Página inicial acessada');

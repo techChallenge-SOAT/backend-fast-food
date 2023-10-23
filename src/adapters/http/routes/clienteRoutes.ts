@@ -11,7 +11,12 @@ router.post('/', async (req: Request, res: Response) => {
   const { cpf, nome, email, senha } = req.body;
 
   try {
-    const cliente = await AdicionarClienteUseCase.execute(cpf, nome, email, senha);
+    const cliente = await AdicionarClienteUseCase.execute(
+      cpf,
+      nome,
+      email,
+      senha,
+    );
     return res.status(201).json(cliente);
   } catch (error) {
     logger.info(error);
@@ -39,7 +44,6 @@ router.get('/:cpf', async (req: Request, res: Response) => {
 
 // Rota para buscar todos clientes
 router.get('/', async (req: Request, res: Response) => {
-  
   try {
     const clientes = await BuscarTodosClientesUseCase.execute();
 

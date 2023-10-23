@@ -25,7 +25,7 @@ CREATE TABLE itens (
 CREATE TABLE pedidos (
     id UUID PRIMARY KEY,
     cliente_cpf VARCHAR(14),
-    data_pedido DATE,
+    data_pedido TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
     status VARCHAR(14) NOT NULL, 
     FOREIGN KEY (cliente_cpf) REFERENCES clientes(cpf)
 );
