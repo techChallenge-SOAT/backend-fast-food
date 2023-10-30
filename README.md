@@ -1,36 +1,36 @@
 # Backend fast food
 
-System for fastfood management.
+Sistema de gerenciamento de fast food. Primeira fase sendo construída com arquitetura hexagonal, possuindo APIs, banco de dados e dockerfile
 
 ---
 
-# Running locally
+## Rodando localmente
 
-### Requirements
+### Requisitos
 
-For local development, you will only need Node.js binaries installed in your environment.
+Para desenvolvimento local você só precisará dos binários do NodeJS instalados no seu ambiente
 
 ### nvm
 
-We recomend the installation of nvm as a version manager
+Recomendamos o `nvm` como gerenciador de versões do NodeJS.
 
 https://github.com/nvm-sh/nvm#installing-and-updating
 
-### Install
+### Instalação
 
 $ npm install
 
-### Running the project
+### Executando o projeto
 
 $ npm start
 
-### Running Tests
+### Executando testes
 
-# unit tests
+#### unit tests
 
 $ jest
 
-### Simple build for production
+### Build para produção
 
 $ npm build
 
@@ -38,6 +38,6 @@ $ npm build
 
 ## Docker
 
-Alternatively you can run the application with a simple comand using `docker compose`
+Como uma alternativa você pode executar o projeto usando `docker` com o `docker compose`
 
 $ docker compose up

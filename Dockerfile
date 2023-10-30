@@ -1,4 +1,4 @@
-FROM node:v20.8.1-slim
+FROM node:latest
 
 WORKDIR /app
 COPY package*.json tsconfig.json /app/

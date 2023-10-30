@@ -1,5 +1,5 @@
 /* eslint-disable no-useless-catch */
-import { Cliente } from './ClienteModel';
+import { Cliente } from '../models/ClienteModel';
 
 export class ClienteRepository {
   static async adicionarCliente(

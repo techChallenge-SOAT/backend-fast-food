@@ -3,14 +3,17 @@ import bodyParser from 'body-parser';
 import clienteRoutes from './routes/clienteRoutes';
 import itemRoutes from './routes/itemRoutes';
 import pedidoRoutes from './routes/pedidoRoutes';
-import logger from '../../config/logger';
+import swaggerUi from 'swagger-ui-express';
+
+import swaggerDocs from '../../config/swagger.json';
 
 const app = express();
 const PORT = process.env.PORT || 3000;
 
 app.use(bodyParser.json());
 
-// Defina as rotas, middleware e outras configurações necessárias aqui
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs));
+
 app.use('/clientes', clienteRoutes);
 
 app.use('/itens', itemRoutes);
@@ -18,17 +21,11 @@ app.use('/itens', itemRoutes);
 app.use('/pedidos', pedidoRoutes);
 
 app.get('/', (req, res) => {
-  logger.info('Página inicial acessada');
   res.send('Sistema Clientes e Pedidos');
 });
 
-export function startServer() {
-  app.listen(PORT, () => {
-    logger.info('Servidor iniciado na porta ' + PORT);
-    console.log(
-      'Server is Successfully Running, and App is listening on port ' + PORT,
-    );
-  });
-}
+app.listen(PORT, () => {
+  console.log('Servidor iniciado na porta ' + PORT);
+});
 
-// Exporte outros módulos ou funções relacionados à configuração da aplicação, se necessário
+export { app };

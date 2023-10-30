@@ -1,7 +1,7 @@
 import { Op } from 'sequelize';
-import { Pedido as PedidoModel, Item as ItemModel } from './models';
+import { Pedido as PedidoModel, Item as ItemModel } from '../models/models';
 import crypto from 'crypto';
-import Pedido from 'src/application/valueObjects/Pedido';
+import Pedido from '../../../application/valueObjects/Pedido';
 
 export class PedidoRepository {
   static async criar(pedido: Pedido) {
