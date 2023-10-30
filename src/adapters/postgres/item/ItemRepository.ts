@@ -1,5 +1,5 @@
-import Item from 'src/application/valueObjects/Item';
-import { Item as ItemModel } from '../pedido/models';
+import Item from '../../../application/valueObjects/Item';
+import { Item as ItemModel } from '../models/models';
 
 export class ItemRepository {
   static async criar(item: Item) {

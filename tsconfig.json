@@ -12,7 +12,9 @@
       "@docs/*": ["./docs/*"]
     },
     "baseUrl": "./",
-    "outDir": "./dist"
+    "outDir": "./dist",
+    "rootDir": "./src",
+    "resolveJsonModule": true
   },
   "exclude": ["node_modules"],
   "include": ["./typings/*.d.ts", "src/**/*.ts"],

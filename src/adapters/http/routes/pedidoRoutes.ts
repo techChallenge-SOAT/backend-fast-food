@@ -15,7 +15,7 @@ router.get('/', async (_, res: Response) => {
     return res.status(200).json(clientes);
   } catch (error) {
     logger.info(error);
-    return res.status(500).json({ message: 'Erro ao buscar os clientes.' });
+    return res.status(500).json({ message: 'Erro ao buscar os pedidos.' });
   }
 });
 
@@ -42,7 +42,7 @@ router.post('/', async (req: Request, res: Response) => {
     return res.status(201).json(cliente);
   } catch (error) {
     logger.info(error);
-    return res.status(500).json({ message: 'Erro ao adicionar o cliente.' });
+    return res.status(500).json({ message: 'Erro ao adicionar o pedido.' });
   }
 });
 
@@ -53,7 +53,7 @@ router.get('/:id', async (req: Request, res: Response) => {
     return res.status(200).json(clientes);
   } catch (error) {
     logger.info(error);
-    return res.status(500).json({ message: 'Erro ao buscar os clientes.' });
+    return res.status(500).json({ message: 'Erro ao buscar os pedidos.' });
   }
 });
 
@@ -66,7 +66,7 @@ router.patch('/:id', async (req: Request, res: Response) => {
     return res.status(201).json(cliente);
   } catch (error) {
     logger.info(error);
-    return res.status(500).json({ message: 'Erro ao adicionar o cliente.' });
+    return res.status(500).json({ message: 'Erro ao adicionar o pedido.' });
   }
 });
 
