@@ -321,7 +321,7 @@
           "201": {
             "description": "Status do Pedido alterado com sucesso",
             "schema": {
-              "$ref": "#/definitions/Pedido"
+              "$ref": "#/definitions/PedidoAdicionado"
             }
           },
           "500": {
@@ -375,6 +375,21 @@
         }
       }
     },
+    "PedidoAdicionado": {
+      "type": "object",
+      "properties": {
+        "cliente_cpf": {
+          "type": "string",
+          "example": "12345678900"
+        },
+        "itens": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/PedidoItem"
+          }
+        }
+      }
+    },
     "Pedido": {
       "type": "object",
       "properties": {
@@ -413,4 +428,3 @@
     }
   }
 }
-
