@@ -358,20 +358,20 @@
       "properties": {
         "categoria": {
           "type": "string",
-          "example": "Eletrônicos"
+          "example": "Lanche"
         },
         "nome": {
           "type": "string",
-          "example": "Smartphone"
+          "example": "Hambúrguer com Queijo"
         },
         "descricao": {
           "type": "string",
-          "example": "Um smartphone moderno"
+          "example": "Delicioso hambúrguer grelhado com queijo derretido"
         },
         "preco_unitario": {
           "type": "number",
           "format": "float",
-          "example": 499.99
+          "example": 39.99
         }
       }
     },
