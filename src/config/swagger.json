@@ -452,7 +452,7 @@
         },
         "status": {
           "type": "string",
-          "example": "Em andamento"
+          "example": "pronto"
         }
       }
     },
