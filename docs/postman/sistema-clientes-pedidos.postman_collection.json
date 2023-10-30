@@ -16,10 +16,7 @@
 							"listen": "prerequest",
 							"script": {
 								"exec": [
-									"pm.environment.set(\"cpf\", \"\");",
-									"pm.environment.set(\"nome\", \"\");",
-									"pm.environment.set(\"email\", \"\");",
-									"pm.environment.set(\"senha\", \"\");"
+									""
 								],
 								"type": "text/javascript"
 							}
@@ -30,7 +27,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"cpf\":{{cpf}},\n    \"nome\": {{nome}},\n    \"email\": {{email}},\n    \"senha\": {{senha}}\n}",
+							"raw": "{\n  \"cpf\": \"12345678900\",\n  \"nome\": \"João da Silva\",\n  \"email\": \"joao@example.com\",\n  \"senha\": \"senha123\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -42,13 +39,13 @@
 					"response": []
 				},
 				{
-					"name": "clientes/cpf",
+					"name": "clientes/{cpf}",
 					"event": [
 						{
 							"listen": "prerequest",
 							"script": {
 								"exec": [
-									"pm.environment.set(\"cpf\", \"\");"
+									"pm.environment.set(\"cpf\", \"12345678900\");"
 								],
 								"type": "text/javascript"
 							}
@@ -60,16 +57,205 @@
 						"url": "localhost:3000/clientes/{{cpf}}"
 					},
 					"response": []
+				},
+				{
+					"name": "clientes",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "localhost:3000/clientes"
+					},
+					"response": []
 				}
 			]
 		},
 		{
 			"name": "pedidos",
-			"item": []
+			"item": [
+				{
+					"name": "pedidos",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "localhost:3000/clientes"
+					},
+					"response": []
+				},
+				{
+					"name": "pedidos",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"cliente_cpf\": \"12345678900\",\n    \"itens\": [\n      {\n        \"item_id\": 1,\n        \"quantidade\": 2\n      }\n    ]\n  }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "localhost:3000/pedidos"
+					},
+					"response": []
+				},
+				{
+					"name": "pedidos/{id}",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"pm.environment.set(\"id\", \"1\");"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"status\": \"pronto\"\n  }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "localhost:3000/pedidos/{{id}}"
+					},
+					"response": []
+				},
+				{
+					"name": "pedidos/{id}",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"pm.environment.set(\"id\", \"1\");"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "localhost:3000/pedidos/{{id}}"
+					},
+					"response": []
+				}
+			]
 		},
 		{
 			"name": "itens",
-			"item": []
+			"item": [
+				{
+					"name": "itens",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "localhost:3000/itens"
+					},
+					"response": []
+				},
+				{
+					"name": "itens",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"categoria\": \"Lanche\",\n  \"nome\": \"Hambúrguer com Queijo\",\n  \"descricao\": \"Delicioso hambúrguer grelhado com queijo derretido\",\n  \"preco_unitario\": 39.99\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "localhost:3000/itens"
+					},
+					"response": []
+				},
+				{
+					"name": "itens/{id}",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"pm.environment.set(\"id\", \"1\");"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "localhost:3000/itens/{{id}}"
+					},
+					"response": []
+				}
+			]
 		}
 	]
 }
