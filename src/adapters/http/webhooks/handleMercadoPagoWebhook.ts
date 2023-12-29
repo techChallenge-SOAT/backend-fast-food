@@ -1,8 +1,22 @@
-import { Request, Response } from 'express';
+import express, { Request, Response } from 'express';
+import { AlterarStatusDoPedidoUseCase } from '../../../application/useCases/pedido/AlterarStatusDoPedidoUseCase';
+import { Status } from '../../../application/valueObjects/Pedido';
 
-export const handleMercadoPagoWebhook = (req: Request, res: Response) => {
-  // Lógica para lidar com o webhook do MercadoPago
-  // Por exemplo, processar os dados recebidos, atualizar informações no sistema, etc.
-  console.log('Requisição recebida no webhook do MercadoPago:', req.body);
-  res.status(200).send('Requisição recebida pelo webhook do MercadoPago');
+export const handleMercadoPagoWebhook = async (req: Request, res: Response) => {
+  try {
+    const { id_pedido, status } = req.body;
+
+    if (status === 'pago') {
+      await AlterarStatusDoPedidoUseCase.execute(id_pedido, Status.Pago);
+      return res.status(200).send('Status do pedido atualizado para "pago"');
+    } else if (status === 'cancelado') {
+      await AlterarStatusDoPedidoUseCase.execute(id_pedido, Status.Cancelado);
+      return res.status(200).send('Status do pedido atualizado para "cancelado"');
+    } else {
+      return res.status(400).send('Status inválido recebido');
+    }
+  } catch (error) {
+    console.error('Erro ao processar webhook do MercadoPago:', error);
+    return res.status(500).send('Erro interno ao processar o webhook');
+  }
 };

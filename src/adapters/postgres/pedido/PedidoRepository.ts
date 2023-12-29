@@ -9,7 +9,7 @@ export class PedidoRepository {
     return await PedidoModel.create({
       id,
       cliente_cpf: pedido.cliente_cpf,
-      status: 'criado',
+      status: 'recebido',
     });
   }
 

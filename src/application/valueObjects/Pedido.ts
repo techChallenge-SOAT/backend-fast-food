@@ -1,7 +1,7 @@
 import { v4 as uuidv4 } from 'uuid';
 
 export enum Status {
-  Criado = 'criado',
+  Recebido = 'recebido',
   Pago = 'pago',
   Preparacao = 'em preparação',
   Cancelado = 'cancelado',
@@ -19,6 +19,6 @@ export default class Pedido {
     this.id = uuidv4();
     this.cliente_cpf = cliente_cpf;
     this.data_pedido = data_pedido;
-    this.status = Status.Criado;
+    this.status = Status.Recebido;
   }
 }

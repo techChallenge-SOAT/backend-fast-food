@@ -6,7 +6,7 @@ import logger from '../../../config/logger';
 
 export class CriarPedidoUseCase {
   static async execute(pedido: Pedido, itens: PedidoItem[]) {
-    const pedido_criado = await PedidoRepository.criar(pedido);
+    const pedido_recebido = await PedidoRepository.criar(pedido);
 
     await Promise.all(
       itens.map(async ({ item_id, quantidade }) => {
@@ -16,7 +16,7 @@ export class CriarPedidoUseCase {
             throw new Error('Item não encontrado');
           }
           return PedidoRepository.adicionarItem(
-            pedido_criado,
+            pedido_recebido,
             item,
             quantidade,
           );
@@ -25,7 +25,6 @@ export class CriarPedidoUseCase {
         }
       }),
     );
-    
-    return pedido_criado;
+    return pedido_recebido;
   }
 }
