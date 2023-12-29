@@ -18,6 +18,4 @@ export default class PedidoItens {
     this.item_id = item_id;
     this.quantidade = quantidade;
   }
-
-  // Métodos relacionados ao modelo de pedido
 }
