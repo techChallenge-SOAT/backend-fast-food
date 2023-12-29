@@ -20,7 +20,6 @@ class Pedido extends Model<
   public cliente_cpf!: string;
   public data_pedido?: Date;
   public status!: string;
-  //store the instance itens
   declare itens?: Item[];
 
   declare buscaItens: BelongsToManyGetAssociationsMixin<Item>;

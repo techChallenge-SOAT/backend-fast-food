@@ -19,7 +19,6 @@ export class PedidoRepository {
     });
   }
 
-  //adiciona itens ao pedido
   static async adicionarItem(
     pedido: PedidoModel,
     item: ItemModel,
@@ -31,7 +30,6 @@ export class PedidoRepository {
     return pedido.addItem(item, { through: { quantidade } });
   }
 
-  // atualiza o status do pedido
   static async atualizarStatus(pedido_id: string, status: string) {
     return PedidoModel.update({ status: status }, { where: { id: pedido_id } });
   }

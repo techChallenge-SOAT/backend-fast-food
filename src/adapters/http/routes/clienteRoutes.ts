@@ -6,7 +6,6 @@ import logger from '../../../config/logger';
 
 const router = express.Router();
 
-// Rota para adicionar um cliente
 router.post('/', async (req: Request, res: Response) => {
   const { cpf, nome, email, senha } = req.body;
 
@@ -24,7 +23,6 @@ router.post('/', async (req: Request, res: Response) => {
   }
 });
 
-// Rota para buscar um cliente pelo CPF
 router.get('/:cpf', async (req: Request, res: Response) => {
   const cpf = req.params.cpf;
 
@@ -42,7 +40,6 @@ router.get('/:cpf', async (req: Request, res: Response) => {
   }
 });
 
-// Rota para buscar todos clientes
 router.get('/', async (req: Request, res: Response) => {
   try {
     const clientes = await BuscarTodosClientesUseCase.execute();
