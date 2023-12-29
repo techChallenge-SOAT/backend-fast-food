@@ -3,7 +3,7 @@ import bodyParser from 'body-parser';
 import clienteRoutes from './routes/clienteRoutes';
 import itemRoutes from './routes/itemRoutes';
 import pedidoRoutes from './routes/pedidoRoutes';
-import { handleMercadoPagoWebhook } from './routes/webhooks/handleMercadoPagoWebhook';
+import { handleMercadoPagoWebhook } from './webhooks/handleMercadoPagoWebhook';
 import swaggerUi from 'swagger-ui-express';
 
 import swaggerDocs from '../../config/swagger.json';
