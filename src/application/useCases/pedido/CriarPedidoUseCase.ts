@@ -7,6 +7,7 @@ import logger from '../../../config/logger';
 export class CriarPedidoUseCase {
   static async execute(pedido: Pedido, itens: PedidoItem[]) {
     const pedido_criado = await PedidoRepository.criar(pedido);
+
     await Promise.all(
       itens.map(async ({ item_id, quantidade }) => {
         try {
@@ -24,7 +25,7 @@ export class CriarPedidoUseCase {
         }
       }),
     );
-
+    
     return pedido_criado;
   }
 }
