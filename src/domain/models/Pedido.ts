@@ -14,6 +14,4 @@ export default class Pedido {
     this.data_pedido = data_pedido;
     this.status = status;
   }
-
-  // Métodos relacionados ao modelo de pedido
 }

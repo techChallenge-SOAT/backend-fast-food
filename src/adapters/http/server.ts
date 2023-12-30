@@ -3,6 +3,7 @@ import bodyParser from 'body-parser';
 import clienteRoutes from './routes/clienteRoutes';
 import itemRoutes from './routes/itemRoutes';
 import pedidoRoutes from './routes/pedidoRoutes';
+import { handleMercadoPagoWebhook } from './webhooks/handleMercadoPagoWebhook';
 import swaggerUi from 'swagger-ui-express';
 
 import swaggerDocs from '../../config/swagger.json';
@@ -19,6 +20,8 @@ app.use('/clientes', clienteRoutes);
 app.use('/itens', itemRoutes);
 
 app.use('/pedidos', pedidoRoutes);
+
+app.use('/webhook/mercadopago', handleMercadoPagoWebhook);
 
 app.get('/', (req, res) => {
   res.send('Sistema Clientes e Pedidos');

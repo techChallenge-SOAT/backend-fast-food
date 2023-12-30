@@ -17,6 +17,4 @@ export default class Item {
     this.descricao = descricao;
     this.preco_unitario = preco_unitario;
   }
-
-  // Métodos relacionados ao modelo de item
 }

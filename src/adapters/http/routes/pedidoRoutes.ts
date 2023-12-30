@@ -6,6 +6,7 @@ import Pedido from '../../../application/valueObjects/Pedido';
 import PedidoItem from '../../../application/valueObjects/PedidoItem';
 import { BuscarPedidoPorIdUseCase } from '../../../application/useCases/pedido/BuscarPedidoPorIdUseCase';
 import { AlterarStatusDoPedidoUseCase } from '../../../application/useCases/pedido/AlterarStatusDoPedidoUseCase';
+import { Status} from '../../../application/valueObjects/Pedido'
 
 const router = express.Router();
 
@@ -59,9 +60,14 @@ router.get('/:id', async (req: Request, res: Response) => {
 
 router.patch('/:id', async (req: Request, res: Response) => {
   const id = String(req.params.id);
-  const status = String(req.body.status);
+  const statusFromBody = String(req.body.status) as keyof typeof Status;
+
+  if (!(statusFromBody in Status)) {
+    return res.status(400).json({ message: 'Status inválido fornecido.' });
+  }
 
   try {
+    const status = statusFromBody as unknown as Status;
     const cliente = await AlterarStatusDoPedidoUseCase.execute(id, status);
     return res.status(201).json(cliente);
   } catch (error) {
