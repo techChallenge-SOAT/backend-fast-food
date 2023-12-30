@@ -1,8 +1,8 @@
 -- Criação do banco de dados
-CREATE DATABASE sistema_pedidos;
+CREATE DATABASE bd-clientes-pedidos;
 
 -- Seleciona o banco de dados
-USE sistema_pedidos;
+USE bd-clientes-pedidos;
 
 -- Tabela de Clientes com CPF como Primary Key e Senha Not Null
 CREATE TABLE clientes (
@@ -14,7 +14,7 @@ CREATE TABLE clientes (
 
 -- Tabela de Itens
 CREATE TABLE itens (
-    id INT AUTO_INCREMENT PRIMARY KEY,
+    id SERIAL PRIMARY KEY,
     categoria VARCHAR(255) NOT NULL,
     nome VARCHAR(255) NOT NULL,
     descricao VARCHAR(255) NOT NULL,
@@ -32,7 +32,7 @@ CREATE TABLE pedidos (
 
 -- Tabela de Relacionamento entre Pedidos e Itens (1:N)
 CREATE TABLE pedidos_itens (
-    id INT AUTO_INCREMENT PRIMARY KEY,
+    id SERIAL PRIMARY KEY,
     pedido_id UUID,
     item_id INT,
     quantidade INT NOT NULL,

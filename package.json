@@ -7,7 +7,7 @@
   "main": "index.js",
   "homepage": "https://github.com/techChallenge-SOAT/backend-fase01#readme",
   "scripts": {
-    "start": "node dist/src/index.js",
+    "start": "node dist/index.js",
     "dev": "nodemon src/index.ts",
     "build": "tsc",
     "lint": "eslint \"{src,apps,libs,test}/**/*.ts\" --fix",
