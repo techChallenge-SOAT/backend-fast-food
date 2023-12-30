@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: backend-main-servico
+spec:
+  selector:
+    app: backend-main-pod
+  ports:
+    - protocol: TCP
+      port: 8080
+      targetPort: 80

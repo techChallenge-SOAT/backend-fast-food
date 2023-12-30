@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: Deployment
+metadata:
+  name: backend-main-implantacao
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: backend-main-pod
+  template:
+    metadata:
+      labels:
+        app: backend-main-pod
+    spec:
+      containers:
+        - name: backend-main-container
+          image: nginx
+          ports:
+            - containerPort: 80
