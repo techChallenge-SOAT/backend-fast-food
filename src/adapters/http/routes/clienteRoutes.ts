@@ -7,10 +7,11 @@ import logger from '../../../config/logger';
 const router = express.Router();
 
 router.post('/', async (req: Request, res: Response) => {
-  const { cpf, nome, email, senha } = req.body;
+  const { id, cpf, nome, email, senha } = req.body;
 
   try {
     const cliente = await AdicionarClienteUseCase.execute(
+      id,
       cpf,
       nome,
       email,
@@ -20,6 +21,23 @@ router.post('/', async (req: Request, res: Response) => {
   } catch (error) {
     logger.info(error);
     return res.status(500).json({ message: 'Erro ao adicionar o cliente.' });
+  }
+});
+
+router.get('/:id', async (req: Request, res: Response) => {
+  const id = req.params.id;
+
+  try {
+    const cliente = await BuscarClientePorCPFUseCase.execute(id);
+
+    if (cliente) {
+      return res.json(cliente);
+    } else {
+      return res.status(404).json({ message: 'Cliente não encontrado.' });
+    }
+  } catch (error) {
+    logger.info(error);
+    return res.status(500).json({ message: 'Erro ao buscar o cliente.' });
   }
 });
 

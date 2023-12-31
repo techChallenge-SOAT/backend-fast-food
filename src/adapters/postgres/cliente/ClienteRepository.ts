@@ -3,6 +3,7 @@ import { Cliente } from '../models/ClienteModel';
 
 export class ClienteRepository {
   static async adicionarCliente(
+    id: string,
     cpf: string,
     nome: string,
     email: string,
@@ -10,6 +11,7 @@ export class ClienteRepository {
   ) {
     try {
       const cliente = await Cliente.create({
+        id,
         cpf,
         nome,
         email,
@@ -18,6 +20,22 @@ export class ClienteRepository {
       return cliente;
     } catch (error) {
       throw error;
+    }
+  }
+
+  static async buscarClientePorId(id: string) {
+    try {
+      const cliente = await Cliente.findOne({ where: { id: id } });
+      if (!cliente) {
+        return null;
+      }
+      return cliente;
+    } catch (error) {
+      if (error instanceof Error) {
+        throw new Error(error.message);
+      } else {
+        throw new Error('Erro ao buscar cliente por id');
+      }
     }
   }
 

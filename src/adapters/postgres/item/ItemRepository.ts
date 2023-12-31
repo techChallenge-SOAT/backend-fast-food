@@ -11,7 +11,7 @@ export class ItemRepository {
     });
   }
 
-  static async buscarPorId(id: number) {
+  static async buscarPorId(id: string) {
     return ItemModel.findByPk(id);
   }
 

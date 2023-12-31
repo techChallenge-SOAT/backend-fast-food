@@ -6,7 +6,8 @@ USE bd-clientes-pedidos;
 
 -- Tabela de Clientes com CPF como Primary Key e Senha Not Null
 CREATE TABLE clientes (
-    cpf VARCHAR(14) PRIMARY KEY,
+    id UUID PRIMARY KEY,
+    cpf VARCHAR(14) UNIQUE NOT NULL,
     nome VARCHAR(255) NOT NULL,
     email VARCHAR(255) UNIQUE NOT NULL,
     senha VARCHAR(255) NOT NULL
@@ -14,7 +15,7 @@ CREATE TABLE clientes (
 
 -- Tabela de Itens
 CREATE TABLE itens (
-    id SERIAL PRIMARY KEY,
+    id UUID PRIMARY KEY,
     categoria VARCHAR(255) NOT NULL,
     nome VARCHAR(255) NOT NULL,
     descricao VARCHAR(255) NOT NULL,
@@ -32,9 +33,8 @@ CREATE TABLE pedidos (
 
 -- Tabela de Relacionamento entre Pedidos e Itens (1:N)
 CREATE TABLE pedidos_itens (
-    id SERIAL PRIMARY KEY,
     pedido_id UUID,
-    item_id INT,
+    item_id UUID,
     quantidade INT NOT NULL,
     FOREIGN KEY (pedido_id) REFERENCES pedidos(id),
     FOREIGN KEY (item_id) REFERENCES itens(id)

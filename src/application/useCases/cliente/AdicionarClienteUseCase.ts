@@ -12,6 +12,7 @@ export class AdicionarClienteUseCase {
   }
 
   static async execute(
+    id: string,
     cpf: string,
     nome: string,
     email: string,
@@ -30,6 +31,7 @@ export class AdicionarClienteUseCase {
       }
 
       const cliente = await ClienteRepository.adicionarCliente(
+        id,
         cpf,
         nome,
         email,

@@ -2,6 +2,7 @@ import { Model, DataTypes } from 'sequelize';
 import sequelize from '../../../config/sequelize';
 
 export class Cliente extends Model {
+  public id!: string;
   public cpf!: string;
   public nome!: string;
   public email!: string;
@@ -10,9 +11,13 @@ export class Cliente extends Model {
 
 Cliente.init(
   {
-    cpf: {
+    id: {
       type: DataTypes.STRING,
       primaryKey: true,
+    },
+    cpf: {
+      type: DataTypes.STRING,
+      allowNull: false,
     },
     nome: {
       type: DataTypes.STRING,
