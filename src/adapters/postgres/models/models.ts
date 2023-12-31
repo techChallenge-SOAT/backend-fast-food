@@ -64,7 +64,6 @@ Pedido.init(
 );
 
 class PedidoItem extends Model {
-  public id!: string;
   public pedido_id!: string;
   public item_id!: number;
   public quantidade!: number;
@@ -72,10 +71,6 @@ class PedidoItem extends Model {
 
 PedidoItem.init(
   {
-    id: {
-      type: DataTypes.STRING,
-      primaryKey: true,
-    },
     pedido_id: {
       type: DataTypes.STRING,
       allowNull: false,

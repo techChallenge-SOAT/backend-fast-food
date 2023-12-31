@@ -26,7 +26,6 @@ router.post('/', async (req: Request, res: Response) => {
 
 router.get('/:id', async (req: Request, res: Response) => {
   const id = req.params.id;
-
   try {
     const cliente = await BuscarClientePorCPFUseCase.execute(id);
 
@@ -43,7 +42,6 @@ router.get('/:id', async (req: Request, res: Response) => {
 
 router.get('/:cpf', async (req: Request, res: Response) => {
   const cpf = req.params.cpf;
-
   try {
     const cliente = await BuscarClientePorCPFUseCase.execute(cpf);
 
