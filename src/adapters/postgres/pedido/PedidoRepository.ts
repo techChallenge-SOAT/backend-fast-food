@@ -1,5 +1,5 @@
 import { Op } from 'sequelize';
-import { Pedido as PedidoModel, Item as ItemModel } from '../models/models';
+import { Item as ItemModel, Pedido as PedidoModel } from '../models/PedidoItemModels';
 import crypto from 'crypto';
 import Pedido from '../../../application/valueObjects/Pedido';
 
@@ -35,21 +35,25 @@ export class PedidoRepository {
   }
 
   static async buscarUltimos() {
-    return PedidoModel.findAll({
-      where: {
-        status: {
-          [Op.not]: 'Finalizado',
+    try {
+      return await PedidoModel.findAll({
+        where: {
+          status: {
+            [Op.not]: 'Finalizado',
+          },
         },
-      },
-      limit: 10,
-      order: [['data_pedido', 'DESC']],
-      include: [
-        {
-          model: ItemModel,
-          as: 'itens',
-          through: { attributes: ['quantidade'] },
-        },
-      ],
-    });
+        limit: 10,
+        order: [['data_pedido', 'DESC']],
+        include: [
+          {
+            model: ItemModel,
+            as: 'Itens',
+            through: { attributes: ['quantidade'] },
+          },
+        ],
+      });
+    } catch (error) {
+      console.error('Erro ao buscar os últimos pedidos:', error);
+    }
   }
 }

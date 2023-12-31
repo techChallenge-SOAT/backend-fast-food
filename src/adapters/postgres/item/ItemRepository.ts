@@ -1,5 +1,5 @@
 import Item from '../../../application/valueObjects/Item';
-import { Item as ItemModel } from '../models/models';
+import { Item as ItemModel } from '../models/PedidoItemModels';
 
 export class ItemRepository {
   static async criar(item: Item) {
