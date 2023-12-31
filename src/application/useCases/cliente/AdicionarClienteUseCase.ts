@@ -1,3 +1,4 @@
+import Cliente from '../../../application/valueObjects/Cliente';
 import { ClienteRepository } from '../../../adapters/postgres/cliente/ClienteRepository';
 
 export class AdicionarClienteUseCase {
@@ -12,7 +13,6 @@ export class AdicionarClienteUseCase {
   }
 
   static async execute(
-    id: string,
     cpf: string,
     nome: string,
     email: string,
@@ -30,14 +30,15 @@ export class AdicionarClienteUseCase {
         throw new Error('Email já está cadastrado.');
       }
 
-      const cliente = await ClienteRepository.adicionarCliente(
-        id,
+      
+      const cliente = new Cliente(
         cpf,
         nome,
         email,
         senha,
-      );
-      return cliente;
+        )
+
+      return ClienteRepository.adicionarCliente(cliente);
     } catch (error) {
       throw error;
     }

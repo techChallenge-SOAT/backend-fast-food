@@ -1,31 +1,20 @@
-/* eslint-disable no-useless-catch */
-import { Cliente } from '../models/ClienteModel';
+import Cliente from '../../../application/valueObjects/Cliente';
+import { Cliente as ClienteModel} from '../models/ClienteModel';
 
 export class ClienteRepository {
-  static async adicionarCliente(
-    id: string,
-    cpf: string,
-    nome: string,
-    email: string,
-    senha: string,
-  ) {
-    try {
-      const cliente = await Cliente.create({
-        id,
-        cpf,
-        nome,
-        email,
-        senha,
-      });
-      return cliente;
-    } catch (error) {
-      throw error;
-    }
+  static async adicionarCliente(cliente: Cliente) {
+    return await ClienteModel.create({
+      id: cliente.id,
+      cpf: cliente.cpf,
+      nome: cliente.nome,
+      email: cliente.email,
+      senha: cliente.senha,
+    });
   }
 
   static async buscarClientePorId(id: string) {
     try {
-      const cliente = await Cliente.findByPk(id);
+      const cliente = await ClienteModel.findByPk(id);
       if (!cliente) {
         return null;
       }
@@ -41,7 +30,7 @@ export class ClienteRepository {
 
   static async buscarClientePorCPF(cpf: string) {
     try {
-      const cliente = await Cliente.findOne({ where: { cpf: cpf } });
+      const cliente = await ClienteModel.findOne({ where: { cpf: cpf } });
       if (!cliente) {
         return null;
       }
@@ -57,7 +46,7 @@ export class ClienteRepository {
 
   static async buscarClientePorEmail(email: string) {
     try {
-      const cliente = await Cliente.findOne({ where: { email: email } });
+      const cliente = await ClienteModel.findOne({ where: { email: email } });
       if (!cliente) {
         return null;
       }
@@ -73,7 +62,7 @@ export class ClienteRepository {
 
   static async buscarTodosClientes() {
     try {
-      const clientes = await Cliente.findAll();
+      const clientes = await ClienteModel.findAll();
       return clientes;
     } catch (error) {
       throw error;

@@ -8,17 +8,16 @@ import logger from '../../../config/logger';
 const router = express.Router();
 
 router.post('/', async (req: Request, res: Response) => {
-  const { id, cpf, nome, email, senha } = req.body;
+  const { cpf, nome, email, senha } = req.body;
 
   try {
     const cliente = await AdicionarClienteUseCase.execute(
-      id,
       cpf,
       nome,
       email,
       senha,
     );
-    return res.status(201).json(cliente);
+    return res.status(201).json({ message: 'Sucesso', cliente: cliente });
   } catch (error) {
     logger.info(error);
     return res.status(500).json({ message: 'Erro ao adicionar o cliente.' });
