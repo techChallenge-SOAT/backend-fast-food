@@ -6,6 +6,10 @@ export const handleMercadoPagoWebhook = async (req: Request, res: Response) => {
   try {
     const { id_pedido, status } = req.body;
 
+    if (!id_pedido || !status) {
+      return res.status(400).send('Pedido ou status ausente');
+    }
+    
     if (status.trim().toLowerCase() === 'pago' ) {
       await AlterarStatusDoPedidoUseCase.execute(id_pedido, Status.Pago);
       return res.status(200).send('Status do pedido atualizado para "pago"');

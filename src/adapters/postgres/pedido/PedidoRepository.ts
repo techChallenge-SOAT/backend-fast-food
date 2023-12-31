@@ -56,4 +56,13 @@ export class PedidoRepository {
       console.error('Erro ao buscar os últimos pedidos:', error);
     }
   }
+
+  static async obterStatus(id: string): Promise<string | null> {
+    try {
+      const pedido = await PedidoModel.findByPk(id);
+      return pedido ? pedido.status : null;
+    } catch (error) {
+      throw new Error(`Erro ao buscar status do pedido: ${error}`);
+    }
+  }
 }

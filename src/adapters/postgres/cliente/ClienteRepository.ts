@@ -15,7 +15,7 @@ export class ClienteRepository {
   static async buscarClientePorId(id: string) {
     try {
       const cliente = await ClienteModel.findByPk(id);
-      return cliente;
+      return cliente ? cliente : null;
     } catch (error) {
       if (error instanceof Error) {
         throw new Error(error.message);
@@ -28,7 +28,7 @@ export class ClienteRepository {
   static async buscarClientePorCPF(cpf: string) {
     try {
       const cliente = await ClienteModel.findOne({ where: { cpf: cpf } });
-      return cliente;
+      return cliente ? cliente : null;
     } catch (error) {
       if (error instanceof Error) {
         throw new Error(error.message);
@@ -41,10 +41,7 @@ export class ClienteRepository {
   static async buscarClientePorEmail(email: string) {
     try {
       const cliente = await ClienteModel.findOne({ where: { email: email } });
-      if (!cliente) {
-        return null;
-      }
-      return cliente;
+      return cliente ? cliente : null;
     } catch (error) {
       if (error instanceof Error) {
         throw new Error(error.message);
@@ -57,7 +54,7 @@ export class ClienteRepository {
   static async buscarTodosClientes() {
     try {
       const clientes = await ClienteModel.findAll();
-      return clientes;
+      return clientes ? clientes : null;
     } catch (error) {
       throw error;
     }
