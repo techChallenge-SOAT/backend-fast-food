@@ -14,7 +14,7 @@ class Pedido extends Model {
   #cliente_cpf!: string;
   #data_pedido?: Date;
   #status!: string;
-  #itens?: Item[];
+  public itens?: Item[];
 
   get id(): string {
     return this.#id;
@@ -86,13 +86,17 @@ Pedido.init(
       allowNull: false,
       defaultValue: 'recebido',
     },
+    createdAt: {
+      type: DataTypes.DATE,
+      field: 'data_pedido',
+    },
   },
   {
     sequelize,
     modelName: 'Pedido',
     tableName: 'pedidos',
     timestamps: true,
-    createdAt: 'data_pedido',
+    createdAt: false,
     updatedAt: false,
   }
 );
@@ -148,6 +152,7 @@ PedidoItem.init(
     sequelize,
     modelName: 'PedidoItem',
     tableName: 'pedidos_itens',
+    timestamps: false,
   },
 );
 
@@ -235,7 +240,7 @@ Item.init(
   },
 );
 
-Pedido.belongsToMany(Item, { through: PedidoItem, foreignKey: 'pedido_id', as: 'Itens' });
+Pedido.belongsToMany(Item, { through: PedidoItem, foreignKey: 'pedido_id', as: 'itens' });
 Item.belongsToMany(Pedido, { through: PedidoItem, foreignKey: 'item_id' });
 
 export { Pedido, PedidoItem, Item };
