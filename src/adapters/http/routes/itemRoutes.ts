@@ -36,7 +36,7 @@ router.get('/', async (_, res: Response) => {
 
 router.get('/:id', async (req: Request, res: Response) => {
   try {
-    const id = Number(req.params.id);
+    const id = String(req.params.id);
     const clientes = await BuscarItemPorIDUseCase.execute(id);
     return res.status(200).json(clientes);
   } catch (error) {
