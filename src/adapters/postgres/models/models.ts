@@ -59,6 +59,7 @@ Pedido.init(
   {
     sequelize,
     modelName: 'Pedido',
+    tableName: 'pedidos',
   },
 );
 
@@ -91,6 +92,7 @@ PedidoItem.init(
   {
     sequelize,
     modelName: 'PedidoItem',
+    tableName: 'pedidos_itens',
   },
 );
 
@@ -128,6 +130,7 @@ Item.init(
   {
     sequelize,
     modelName: 'Item',
+    tableName: 'itens',
     timestamps: false,
   },
 );
