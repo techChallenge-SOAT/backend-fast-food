@@ -9,7 +9,6 @@ import swaggerUi from 'swagger-ui-express';
 import swaggerDocs from '../../config/swagger.json';
 
 const app = express();
-const PORT = process.env.PORT || 3000;
 
 app.use(bodyParser.json());
 
@@ -25,10 +24,6 @@ app.use('/webhook/mercadopago', handleMercadoPagoWebhook);
 
 app.get('/', (req, res) => {
   res.send('Sistema Clientes e Pedidos');
-});
-
-app.listen(PORT, () => {
-  console.log('Servidor iniciado na porta ' + PORT);
 });
 
 export { app };

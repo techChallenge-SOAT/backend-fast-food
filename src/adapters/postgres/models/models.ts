@@ -10,7 +10,7 @@ import {
   Association,
   BelongsToManySetAssociationsMixin,
 } from 'sequelize';
-import sequelize from '../../../config/database';
+import sequelize from '../../../config/sequelize';
 
 class Pedido extends Model<
   InferAttributes<Pedido>,

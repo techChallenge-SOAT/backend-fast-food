@@ -23,10 +23,33 @@ export class ClienteRepository {
 
   static async buscarClientePorCPF(cpf: string) {
     try {
-      const cliente = await Cliente.findByPk(cpf);
+      const cliente = await Cliente.findOne({ where: { cpf: cpf } });
+      if (!cliente) {
+        return null;
+      }
       return cliente;
     } catch (error) {
-      throw error;
+      if (error instanceof Error) {
+        throw new Error(error.message);
+      } else {
+        throw new Error('Erro ao buscar cliente por cpf');
+      }
+    }
+  }
+
+  static async buscarClientePorEmail(email: string) {
+    try {
+      const cliente = await Cliente.findOne({ where: { email: email } });
+      if (!cliente) {
+        return null;
+      }
+      return cliente;
+    } catch (error) {
+      if (error instanceof Error) {
+        throw new Error(error.message);
+      } else {
+        throw new Error('Erro ao buscar cliente por email');
+      }
     }
   }
 

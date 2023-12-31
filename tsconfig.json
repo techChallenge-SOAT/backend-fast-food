@@ -12,7 +12,7 @@
       "@docs/*": ["./docs/*"]
     },
     "baseUrl": "./",
-    "outDir": "./dist",
+    "outDir": "./dist/src",
     "rootDir": "./src",
     "resolveJsonModule": true
   },

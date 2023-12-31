@@ -1,5 +1,5 @@
 import { Model, DataTypes } from 'sequelize';
-import sequelize from '../../../config/database';
+import sequelize from '../../../config/sequelize';
 
 export class Cliente extends Model {
   public cpf!: string;
@@ -31,6 +31,7 @@ Cliente.init(
   {
     sequelize,
     modelName: 'Cliente',
+    tableName: 'clientes',
     timestamps: false,
   },
 );
