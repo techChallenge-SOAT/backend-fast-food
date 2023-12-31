@@ -10,7 +10,7 @@ import {
   Association,
   BelongsToManySetAssociationsMixin,
 } from 'sequelize';
-import sequelize from '../../../config/database';
+import sequelize from '../../../config/sequelize';
 
 class Pedido extends Model<
   InferAttributes<Pedido>,
@@ -59,11 +59,11 @@ Pedido.init(
   {
     sequelize,
     modelName: 'Pedido',
+    tableName: 'pedidos',
   },
 );
 
 class PedidoItem extends Model {
-  public id!: number;
   public pedido_id!: string;
   public item_id!: number;
   public quantidade!: number;
@@ -71,10 +71,6 @@ class PedidoItem extends Model {
 
 PedidoItem.init(
   {
-    id: {
-      type: DataTypes.STRING,
-      primaryKey: true,
-    },
     pedido_id: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -91,11 +87,12 @@ PedidoItem.init(
   {
     sequelize,
     modelName: 'PedidoItem',
+    tableName: 'pedidos_itens',
   },
 );
 
 class Item extends Model {
-  public id!: number;
+  public id!: string;
   public categoria!: string;
   public nome!: string;
   public descricao!: string;
@@ -105,7 +102,7 @@ class Item extends Model {
 Item.init(
   {
     id: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.STRING,
       primaryKey: true,
     },
     categoria: {
@@ -128,6 +125,7 @@ Item.init(
   {
     sequelize,
     modelName: 'Item',
+    tableName: 'itens',
     timestamps: false,
   },
 );
