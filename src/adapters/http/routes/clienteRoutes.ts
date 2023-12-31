@@ -1,5 +1,6 @@
 import express, { Request, Response } from 'express';
 import { AdicionarClienteUseCase } from '../../../application/useCases/cliente/AdicionarClienteUseCase';
+import { BuscarClientePorIdUseCase } from '../../../application/useCases/cliente/BuscarClientePorIdUseCase';
 import { BuscarClientePorCPFUseCase } from '../../../application/useCases/cliente/BuscarClientePorCPFUseCase';
 import { BuscarTodosClientesUseCase } from '../../../application/useCases/cliente/BuscarTodosClientesUseCase';
 import logger from '../../../config/logger';
@@ -27,7 +28,7 @@ router.post('/', async (req: Request, res: Response) => {
 router.get('/:id', async (req: Request, res: Response) => {
   const id = req.params.id;
   try {
-    const cliente = await BuscarClientePorCPFUseCase.execute(id);
+    const cliente = await BuscarClientePorIdUseCase.execute(id);
 
     if (cliente) {
       return res.json(cliente);
@@ -36,11 +37,13 @@ router.get('/:id', async (req: Request, res: Response) => {
     }
   } catch (error) {
     logger.info(error);
-    return res.status(500).json({ message: 'Erro ao buscar o cliente.' });
+    return res.status(500).json({ message: 'Erro ao buscar o cliente por ID.' });
   }
 });
 
-router.get('/:cpf', async (req: Request, res: Response) => {
+
+
+router.get('/cpf/:cpf', async (req: Request, res: Response) => {
   const cpf = req.params.cpf;
   try {
     const cliente = await BuscarClientePorCPFUseCase.execute(cpf);
@@ -52,7 +55,7 @@ router.get('/:cpf', async (req: Request, res: Response) => {
     }
   } catch (error) {
     logger.info(error);
-    return res.status(500).json({ message: 'Erro ao buscar o cliente.' });
+    return res.status(500).json({ message: 'Erro ao buscar o cliente CPF.' });
   }
 });
 

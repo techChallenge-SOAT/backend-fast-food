@@ -25,7 +25,7 @@ export class ClienteRepository {
 
   static async buscarClientePorId(id: string) {
     try {
-      const cliente = await Cliente.findOne({ where: { id: id } });
+      const cliente = await Cliente.findByPk(id);
       if (!cliente) {
         return null;
       }
