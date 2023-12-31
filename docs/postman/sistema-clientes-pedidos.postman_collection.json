@@ -189,7 +189,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"cliente_cpf\": \"12345678900\",\n    \"itens\": [\n      {\n        \"item_id\": 1,\n        \"quantidade\": 2\n      }\n    ]\n  }",
+							"raw": "{\n    \"cliente_cpf\": \"12345678900\",\n    \"itens\": [\n      {\n        \"item_id\": \"670d7b97-e82e-47f4-bb4a-cd3f05865c90\",\n        \"quantidade\": 2\n      }\n    ]\n  }",
 							"options": {
 								"raw": {
 									"language": "json"
