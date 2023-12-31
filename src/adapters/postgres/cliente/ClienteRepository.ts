@@ -15,9 +15,6 @@ export class ClienteRepository {
   static async buscarClientePorId(id: string) {
     try {
       const cliente = await ClienteModel.findByPk(id);
-      if (!cliente) {
-        return null;
-      }
       return cliente;
     } catch (error) {
       if (error instanceof Error) {
@@ -31,9 +28,6 @@ export class ClienteRepository {
   static async buscarClientePorCPF(cpf: string) {
     try {
       const cliente = await ClienteModel.findOne({ where: { cpf: cpf } });
-      if (!cliente) {
-        return null;
-      }
       return cliente;
     } catch (error) {
       if (error instanceof Error) {

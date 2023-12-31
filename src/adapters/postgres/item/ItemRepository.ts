@@ -16,6 +16,10 @@ export class ItemRepository {
     return ItemModel.findByPk(id);
   }
 
+  static async buscarPorNome(nome: string) {
+    return ItemModel.findOne({ where: { nome: nome}})
+  }
+
   static async buscarTodos() {
     return ItemModel.findAll({
       order: [['nome', 'ASC']],

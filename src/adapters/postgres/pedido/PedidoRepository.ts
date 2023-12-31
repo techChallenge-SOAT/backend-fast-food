@@ -30,8 +30,8 @@ export class PedidoRepository {
     return pedido.addItem(item, { through: { quantidade } });
   }
 
-  static async atualizarStatus(pedido_id: string, status: string) {
-    return PedidoModel.update({ status: status }, { where: { id: pedido_id } });
+  static async atualizarStatus(id: string, status: string) {
+    return PedidoModel.update({ status: status }, { where: { id: id } });
   }
 
   static async buscarUltimos() {
