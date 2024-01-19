@@ -46,16 +46,20 @@ class Pedido extends Model {
 
   declare buscaItens: BelongsToManyGetAssociationsMixin<Item>;
 
-  declare addItem: BelongsToManyAddAssociationMixin<Item, number>;
+  declare addIten: BelongsToManyAddAssociationMixin<Item, number>;
 
   declare addItens: BelongsToManyAddAssociationsMixin<Item, number>;
 
-  declare setItem: BelongsToManySetAssociationsMixin<Item, number>;
+  declare setIten: BelongsToManySetAssociationsMixin<Item, number>;
 
   declare createItem: BelongsToManyCreateAssociationMixin<Item>;
 
   public static associate(models: any) {
-    Pedido.belongsToMany(models.Item, { through: models.PedidoItem, foreignKey: 'pedido_id', otherKey: 'item_id' });
+    Pedido.belongsToMany(models.Item, {
+      through: models.PedidoItem,
+      foreignKey: 'pedido_id',
+      otherKey: 'item_id',
+    });
   }
 }
 
@@ -81,7 +85,7 @@ Pedido.init(
         'em preparação',
         'cancelado',
         'pronto',
-        'finalizado'
+        'finalizado',
       ),
       allowNull: false,
       defaultValue: 'recebido',
@@ -98,7 +102,7 @@ Pedido.init(
     timestamps: true,
     createdAt: false,
     updatedAt: false,
-  }
+  },
 );
 
 class PedidoItem extends Model {
@@ -119,7 +123,7 @@ class PedidoItem extends Model {
   set item_id(value: string) {
     this.#item_id = value;
   }
-  
+
   get quantidade(): number {
     return this.#quantidade;
   }
@@ -205,7 +209,10 @@ class Item extends Model {
   declare createPedido: BelongsToManyCreateAssociationMixin<Pedido>;
 
   public static associate(models: any) {
-    Item.belongsToMany(models.Pedido, { through: models.PedidoItem, foreignKey: 'item_id' });
+    Item.belongsToMany(models.Pedido, {
+      through: models.PedidoItem,
+      foreignKey: 'item_id',
+    });
   }
 }
 
@@ -240,7 +247,11 @@ Item.init(
   },
 );
 
-Pedido.belongsToMany(Item, { through: PedidoItem, foreignKey: 'pedido_id', as: 'itens' });
+Pedido.belongsToMany(Item, {
+  through: PedidoItem,
+  foreignKey: 'pedido_id',
+  as: 'itens',
+});
 Item.belongsToMany(Pedido, { through: PedidoItem, foreignKey: 'item_id' });
 
 export { Pedido, PedidoItem, Item };

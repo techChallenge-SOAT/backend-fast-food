@@ -1,5 +1,5 @@
 import Cliente from '../../../application/valueObjects/Cliente';
-import { Cliente as ClienteModel} from '../models/ClienteModel';
+import { Cliente as ClienteModel } from '../models/ClienteModel';
 
 export class ClienteRepository {
   static async adicionarCliente(cliente: Cliente) {
@@ -52,11 +52,7 @@ export class ClienteRepository {
   }
 
   static async buscarTodosClientes() {
-    try {
-      const clientes = await ClienteModel.findAll();
-      return clientes ? clientes : null;
-    } catch (error) {
-      throw error;
-    }
+    const clientes = await ClienteModel.findAll();
+    return clientes ? clientes : null;
   }
 }

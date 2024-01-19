@@ -6,7 +6,7 @@ import Pedido from '../../../application/valueObjects/Pedido';
 import PedidoItem from '../../../application/valueObjects/PedidoItem';
 import { BuscarPedidoPorIdUseCase } from '../../../application/useCases/pedido/BuscarPedidoPorIdUseCase';
 import { AlterarStatusDoPedidoUseCase } from '../../../application/useCases/pedido/AlterarStatusDoPedidoUseCase';
-import { Status} from '../../../application/valueObjects/Pedido'
+import { Status } from '../../../application/valueObjects/Pedido';
 
 const router = express.Router();
 
@@ -24,14 +24,14 @@ router.post('/', async (req: Request, res: Response) => {
   const cliente_cpf = String(req.body.cliente_cpf);
 
   if (
-    !req.body.ids_itens ||
-    !Array.isArray(req.body.ids_itens) ||
-    req.body.ids_itens.length === 0
+    !req.body.itens ||
+    !Array.isArray(req.body.itens) ||
+    req.body.itens.length === 0
   ) {
     throw new Error('Itens inválidos');
   }
 
-  const itens_pedido = req.body.ids_itens.map(
+  const itens_pedido = req.body.itens.map(
     (item_pedido: PedidoItem) =>
       new PedidoItem(item_pedido.item_id, item_pedido.quantidade),
   );
