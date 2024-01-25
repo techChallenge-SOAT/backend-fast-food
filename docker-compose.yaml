@@ -4,8 +4,8 @@ services:
     image: postgres:latest
     environment:
       POSTGRES_DB: bd-clientes-pedidos
-      POSTGRES_USER: user
-      POSTGRES_PASSWORD: password
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
     ports:
       - '5432:5432'
     volumes:
@@ -23,7 +23,7 @@ services:
     depends_on:
       - postgres
     environment:
-      DATABASE_URL: postgres://user:password@postgres:5432/bd-clientes-pedidos
+      DATABASE_URL: postgres://postgres:postgres@postgres:5432/bd-clientes-pedidos
 
 volumes:
   postgres_data:
