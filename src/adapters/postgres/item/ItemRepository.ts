@@ -17,7 +17,7 @@ export class ItemRepository {
   }
 
   static async buscarPorNome(nome: string) {
-    return ItemModel.findOne({ where: { nome: nome}})
+    return ItemModel.findOne({ where: { nome: nome } });
   }
 
   static async buscarTodos() {

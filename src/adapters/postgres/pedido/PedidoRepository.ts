@@ -1,11 +1,14 @@
-import { Op } from 'sequelize';
-import { Item as ItemModel, Pedido as PedidoModel } from '../models/PedidoItemModels';
-import crypto from 'crypto';
+import { Op, Sequelize } from 'sequelize';
+import {
+  Item as ItemModel,
+  Pedido as PedidoModel,
+} from '../models/PedidoItemModels';
 import Pedido from '../../../application/valueObjects/Pedido';
+import { v4 as uuidv4 } from 'uuid';
 
 export class PedidoRepository {
   static async criar(pedido: Pedido) {
-    const id = crypto.randomBytes(4).toString('hex');
+    const id = uuidv4();
     return await PedidoModel.create({
       id,
       cliente_cpf: pedido.cliente_cpf,
@@ -27,7 +30,7 @@ export class PedidoRepository {
     if (quantidade <= 0) {
       throw new Error('Quantidade inválida');
     }
-    return pedido.addItem(item, { through: { quantidade } });
+    return pedido.addIten(item, { through: { quantidade } });
   }
 
   static async atualizarStatus(id: string, status: string) {
@@ -35,26 +38,32 @@ export class PedidoRepository {
   }
 
   static async buscarUltimos() {
-    try {
-      return await PedidoModel.findAll({
-        where: {
-          status: {
-            [Op.not]: 'Finalizado',
-          },
+    return await PedidoModel.findAll({
+      where: {
+        status: {
+          [Op.not]: 'Finalizado',
         },
-        limit: 10,
-        order: [['data_pedido', 'DESC']],
-        include: [
-          {
-            model: ItemModel,
-            as: 'Itens',
-            through: { attributes: ['quantidade'] },
-          },
-        ],
-      });
-    } catch (error) {
-      console.error('Erro ao buscar os últimos pedidos:', error);
-    }
+      },
+      limit: 10,
+      order: [
+        Sequelize.literal(`
+      CASE
+        WHEN status = 'pronto' THEN 1
+        WHEN status = 'em preparação' THEN 2
+        WHEN status = 'recebido' THEN 3
+        ELSE 4
+      END
+      `),
+        ['createdAt', 'ASC'],
+      ],
+      include: [
+        {
+          model: ItemModel,
+          as: 'itens',
+          through: { attributes: ['quantidade'] },
+        },
+      ],
+    });
   }
 
   static async obterStatus(id: string): Promise<string | null> {

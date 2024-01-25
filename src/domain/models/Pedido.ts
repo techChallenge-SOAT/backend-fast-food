@@ -1,13 +1,21 @@
+export enum Status {
+  Recebido = 'recebido',
+  Pago = 'pago',
+  Preparacao = 'em preparação',
+  Cancelado = 'cancelado',
+  Pronto = 'pronto',
+  Finalizado = 'finalizado',
+}
 export default class Pedido {
   id: string;
   cliente_cpf: string;
   data_pedido: Date;
-  status: string;
+  status: Status;
   constructor(
     id: string,
     cliente_cpf: string,
     data_pedido: Date,
-    status: string,
+    status: Status,
   ) {
     this.id = id;
     this.cliente_cpf = cliente_cpf;

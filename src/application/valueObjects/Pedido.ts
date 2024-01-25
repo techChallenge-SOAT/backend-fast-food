@@ -1,13 +1,5 @@
 import { v4 as uuidv4 } from 'uuid';
-
-export enum Status {
-  Recebido = 'recebido',
-  Pago = 'pago',
-  Preparacao = 'em preparação',
-  Cancelado = 'cancelado',
-  Pronto = 'pronto',
-  Finalizado = 'finalizado',
-}
+import { Status } from '../../domain/models/Pedido';
 
 export default class Pedido {
   id: string;
@@ -15,9 +7,7 @@ export default class Pedido {
   data_pedido?: Date;
   status: Status;
 
-  constructor(
-    cliente_cpf: string,
-    data_pedido?: Date) {
+  constructor(cliente_cpf: string, data_pedido?: Date) {
     this.id = uuidv4();
     this.cliente_cpf = cliente_cpf;
     this.data_pedido = data_pedido;
