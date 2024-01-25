@@ -32,8 +32,8 @@ Antes de iniciar, certifique-se de ter as seguintes ferramentas instaladas em su
 
 1.  **Clone o Repositório:**
 	```bash 
-	git clone git@github.com:techChallenge-SOAT/backend-fase01.git 
-	cd backend-fase01
+	git clone git@github.com:techChallenge-SOAT/backend-fast-food.git 
+	cd backend-fast-food
 	```
 
 
