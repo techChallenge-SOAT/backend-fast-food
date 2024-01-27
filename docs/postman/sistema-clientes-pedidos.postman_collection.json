@@ -1,9 +1,10 @@
 {
 	"info": {
-		"_postman_id": "43d83b54-abe1-46b9-98d7-c4e0467e54a9",
+		"_postman_id": "bcaaf75d-625e-4f3b-99f3-32e2def6b088",
 		"name": "sistema-clientes-pedidos",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "19858656"
+		"_exporter_id": "27482149",
+		"_collection_link": "https://n1wishlist.postman.co/workspace/Sistema-de-Pedidos~e7a632a3-b862-430b-91b4-46b39e39d7b2/collection/27482149-bcaaf75d-625e-4f3b-99f3-32e2def6b088?action=share&source=collection_link&creator=27482149"
 	},
 	"item": [
 		{
@@ -189,7 +190,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"cliente_cpf\": \"12345678900\",\n    \"itens\": [\n      {\n        \"item_id\": \"670d7b97-e82e-47f4-bb4a-cd3f05865c90\",\n        \"quantidade\": 2\n      }\n    ]\n  }",
+							"raw": "{\n    \"cliente_cpf\": \"111.222.333-00\",\n    \"itens\": [\n      {\n        \"item_id\": \"401e97d9-0065-4f30-bf0f-ac471d33a0c1\",\n        \"quantidade\": 2\n      },\n      {\n        \"item_id\": \"21d0a7d2-88ad-4d98-81d0-2fab0ce8ede8\",\n        \"quantidade\": 1\n      },\n      {\n        \"item_id\": \"670d7b97-e82e-47f4-bb4a-cd3f05865c90\",\n        \"quantidade\": 1\n      }\n    ]\n  }",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -197,7 +198,8 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:3000/pedidos",
+							"raw": "http://localhost:3000/pedidos",
+							"protocol": "http",
 							"host": [
 								"localhost"
 							],
@@ -273,6 +275,37 @@
 							"path": [
 								"pedidos",
 								"{{id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "pedidos/{id}/pagamento",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"pm.environment.set(\"id\", \"af55d9e5-d486-410e-8bdb-c43087b79cbe\");"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/pedidos/{{id}}/pagamento",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"pedidos",
+								"{{id}}",
+								"pagamento"
 							]
 						}
 					},
