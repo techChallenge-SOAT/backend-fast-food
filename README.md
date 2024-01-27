@@ -226,6 +226,6 @@ Antes de iniciar, certifique-se de ter as seguintes ferramentas instaladas em su
 >6. Atualizar status Pedido para `pronto`
 >7. Atualizar status Pedido para `finalizado`
 
-Arquitetura
+Arquitetura Local
 
-![Desenho da arquitetura do projeto](image.png)
+![Desenho da arquitetura do projeto](./k8s/Arquitetura%20On-Premise.drawio.png)
