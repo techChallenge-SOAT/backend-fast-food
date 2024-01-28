@@ -27,11 +27,7 @@ Antes de iniciar, certifique-se de ter as seguintes ferramentas instaladas em su
 
 
 
-- Node.js
-
-- npm (Node Package Manager)
-
-- Docker
+- Docker & Docker Compose
 
 
 
