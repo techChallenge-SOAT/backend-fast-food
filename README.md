@@ -237,4 +237,4 @@ Antes de iniciar, certifique-se de ter as seguintes ferramentas instaladas em su
 
 Arquitetura Local
 
-![Desenho da arquitetura do projeto](./docs/kubernetes/Arquitetura%20On-Premise%20K8S.drawio.png)
+![Desenho da arquitetura do projeto](./docs/kubernetes/Arquitetura%20On-Premise%20Final.drawio.png)
