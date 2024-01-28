@@ -1,7 +1,7 @@
 {
 	"info": {
-		"_postman_id": "43d83b54-abe1-46b9-98d7-c4e0467e54a9",
-		"name": "sistema-clientes-pedidos",
+		"_postman_id": "b08dc1a8-1ab5-4f31-89b7-778b1158fc03",
+		"name": "backend-fast-food",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "19858656"
 	},
@@ -27,7 +27,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"cpf\": \"12355677900\",\n    \"nome\": \"Antonio da Silva\",\n    \"email\": \"antonio@example.com\",\n    \"senha\": \"senha123\"\n}",
+							"raw": "{\n    \"cpf\": \"22355677900\",\n    \"nome\": \"Crisana de Oliveira\",\n    \"email\": \"crisana@example.com\",\n    \"senha\": \"senha123\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -54,7 +54,7 @@
 							"listen": "prerequest",
 							"script": {
 								"exec": [
-									"pm.environment.set(\"id\", \"12345678900\");"
+									"pm.environment.set(\"id\", \"0871955b-8707-410d-a069-69673cc3a735\");"
 								],
 								"type": "text/javascript"
 							}
@@ -189,7 +189,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"cliente_cpf\": \"12345678900\",\n    \"itens\": [\n      {\n        \"item_id\": \"670d7b97-e82e-47f4-bb4a-cd3f05865c90\",\n        \"quantidade\": 2\n      }\n    ]\n  }",
+							"raw": "{\n    \"cliente_cpf\": \"111.222.333-00\",\n    \"itens\": [\n      {\n        \"item_id\": \"21d0a7d2-88ad-4d98-81d0-2fab0ce8ede8\",\n        \"quantidade\": 2\n      }\n    ]\n  }",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -255,7 +255,7 @@
 							"listen": "prerequest",
 							"script": {
 								"exec": [
-									"pm.environment.set(\"id\", \"1\");"
+									"pm.environment.set(\"id\", \"371a1359-37fe-468c-9f36-b2509fed34e7\");"
 								],
 								"type": "text/javascript"
 							}
@@ -273,6 +273,37 @@
 							"path": [
 								"pedidos",
 								"{{id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "{id}/pagamento",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"pm.environment.set(\"id\", \"371a1359-37fe-468c-9f36-b2509fed34e7\");"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/pedidos/{{id}}/pagamento",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"pedidos",
+								"{{id}}",
+								"pagamento"
 							]
 						}
 					},
@@ -357,7 +388,7 @@
 							"listen": "prerequest",
 							"script": {
 								"exec": [
-									"pm.environment.set(\"id\", \"1\");"
+									"pm.environment.set(\"id\", \"21d0a7d2-88ad-4d98-81d0-2fab0ce8ede8\");"
 								],
 								"type": "text/javascript"
 							}
