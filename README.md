@@ -1,22 +1,31 @@
-# Documentação do TechChallange: Sistema de Gerenciamento de Pedidos para Lanchonete
+# Documentação do TechChallenge: Sistema de Gerenciamento de Pedidos para Lanchonete
 
-  
+
 
 ## Introdução
 
-  
 
 Bem-vindo à documentação do projeto para o sistema de gerenciamento de pedidos de uma lanchonete. Este guia fornece instruções detalhadas sobre como configurar, executar e interagir com a API backend.
 
-  
+## O Problema
+
+
+Há uma lanchonete de bairro que está expandindo devido seu grande sucesso. Porém, com a expansão e sem um sistema de controle de pedidos, o atendimento aos clientes pode ser caótico e confuso. Por exemplo, imagine que um cliente faça um pedido complexo, como um hambúrguer personalizado com ingredientes específicos, acompanhado de batatas fritas e uma bebida. O atendente pode anotar o pedido em um papel e entregá-lo à cozinha, mas não há garantia de que o pedido será preparado corretamente.
+
+Sem um sistema de controle de pedidos, pode haver confusão entre os atendentes e a cozinha, resultando em atrasos na preparação e entrega dos pedidos. Os pedidos podem ser perdidos, mal interpretados ou esquecidos, levando à insatisfação dos clientes e a perda de negócios.
+
+Em resumo, um sistema de controle de pedidos é essencial para garantir que a lanchonete possa atender os clientes de maneira eficiente, gerenciando seus pedidos e estoques de forma adequada. Sem ele, expandir a lanchonete pode acabar não dando certo, resultando em clientes insatisfeitos e impactando os negócios de forma negativa.
+
+Para solucionar o problema, a lanchonete irá investir em um sistema de autoatendimento de fast food, que é composto por uma série de dispositivos e interfaces que permitem aos clientes selecionar e fazer pedidos sem precisar interagir com um atendente.
+
 
 ## Pré-requisitos
 
-  
+
 
 Antes de iniciar, certifique-se de ter as seguintes ferramentas instaladas em sua máquina:
 
-  
+
 
 - Node.js
 
@@ -24,15 +33,15 @@ Antes de iniciar, certifique-se de ter as seguintes ferramentas instaladas em su
 
 - Docker
 
-  
+
 
 ## Configuração do Projeto
 
-  
+
 
 1.  **Clone o Repositório:**
-	```bash 
-	git clone git@github.com:techChallenge-SOAT/backend-fast-food.git 
+	```bash
+	git clone git@github.com:techChallenge-SOAT/backend-fast-food.git
 	cd backend-fast-food
 	```
 
@@ -51,7 +60,7 @@ Antes de iniciar, certifique-se de ter as seguintes ferramentas instaladas em su
 	docker-compose -d up
 	```
 - **Desligar Projeto**
-	```bash 
+	```bash
 	docker-compose down
 	```
 
@@ -61,7 +70,7 @@ Antes de iniciar, certifique-se de ter as seguintes ferramentas instaladas em su
 - A API estará disponível em `http://localhost:3000` por padrão.
 
 ## Items
-	
+
  1. **Criar Item**
 	 - **Método:** `POST`
 	 - **Endpoint:** `/itens`
@@ -84,7 +93,7 @@ Antes de iniciar, certifique-se de ter as seguintes ferramentas instaladas em su
 		GET localhost:3000/itens/670d7b97-e82e-47f4-bb4a-cd3f05865c90
 		```
 
-4. **Consultar todos os itens** 
+4. **Consultar todos os itens**
 	- **Método:** `GET`
 	- **Endpoint:** `/itens`
 	- **Exemplo Requisição:**
@@ -94,7 +103,7 @@ Antes de iniciar, certifique-se de ter as seguintes ferramentas instaladas em su
 		```
 
 ##  Pedidos
-	
+
  1. **Criar Pedido**
 	 - **Método:** `POST`
 	 - **Endpoint:** `/pedidos`
@@ -119,27 +128,27 @@ Antes de iniciar, certifique-se de ter as seguintes ferramentas instaladas em su
 		```bash
 		GET localhost:3000/pedidos/1
 		```
-3. **Atualizar `status` pedido** 
+3. **Atualizar `status` pedido**
 	- **Método:** `PATCH`
 	- **Endpoint:** `/pedidos/{id}`
 	- **Exemplo Requisição:**
-	
+
 		```json
 		{
 		"status":"pronto"
 		}
 		```
-4. **Consultar todos os pedidos** 
+4. **Consultar todos os pedidos**
 	- **Método:** `GET`
 	- **Endpoint:** `/pedidos`
 	- **Exemplo Requisição:**
-	
+
 		```bash
 		localhost:3000/pedidos
 		```
 
 ##  Pagamento
-	
+
  1. **Gerar pagamento pedido**
 	 - **Método:** `POST`
 	 - **Endpoint:** `/webhooks/mercadopago`
@@ -152,7 +161,7 @@ Antes de iniciar, certifique-se de ter as seguintes ferramentas instaladas em su
 		```
 
 ##  Clientes
-	
+
  1. **Criar cliente**
 	 - **Método:** `POST`
 	 - **Endpoint:** `/clientes`
@@ -183,11 +192,11 @@ Antes de iniciar, certifique-se de ter as seguintes ferramentas instaladas em su
 		GET localhost:3000/clientes/cpf/11122233300
 		```
 
-6. **Consultar todos os clientes** 
+6. **Consultar todos os clientes**
 	- **Método:** `GET`
 	- **Endpoint:** `/clientes`
 	- **Exemplo Requisição:**
-	
+
 		```bash
 		localhost:3000/clientes
 		```
@@ -196,7 +205,7 @@ Antes de iniciar, certifique-se de ter as seguintes ferramentas instaladas em su
 
 ### Funcionalidade: `Pedido`
 
-**Contexto:** 
+**Contexto:**
 *Dado* que eu tenha um item cadastrado
 *E* que eu tenha um cliente cadastrado
 
@@ -207,7 +216,7 @@ Antes de iniciar, certifique-se de ter as seguintes ferramentas instaladas em su
 *Então* deve-se conseguir atualizar o status do pedido até finalizado
 
 >[!NOTE]
-> 
+>
 >A seguir a ordem que deve ser chamado as APIs para realizar o cenário acima
 >1. Criar Item
 >2. Criar Cliente
@@ -216,3 +225,7 @@ Antes de iniciar, certifique-se de ter as seguintes ferramentas instaladas em su
 >5. Atualizar status Pedido para `em preparação`
 >6. Atualizar status Pedido para `pronto`
 >7. Atualizar status Pedido para `finalizado`
+
+Arquitetura Local
+
+![Desenho da arquitetura do projeto](./k8s/Arquitetura%20On-Premise.drawio.png)

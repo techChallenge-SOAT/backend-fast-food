@@ -28,7 +28,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"cpf\": \"12355677900\",\n    \"nome\": \"Antonio da Silva\",\n    \"email\": \"antonio@example.com\",\n    \"senha\": \"senha123\"\n}",
+							"raw": "{\n    \"cpf\": \"22355677900\",\n    \"nome\": \"Crisana de Oliveira\",\n    \"email\": \"crisana@example.com\",\n    \"senha\": \"senha123\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -55,7 +55,7 @@
 							"listen": "prerequest",
 							"script": {
 								"exec": [
-									"pm.environment.set(\"id\", \"12345678900\");"
+									"pm.environment.set(\"id\", \"0871955b-8707-410d-a069-69673cc3a735\");"
 								],
 								"type": "text/javascript"
 							}
@@ -190,7 +190,11 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
+<<<<<<< HEAD:docs/postman/sistema-clientes-pedidos.postman_collection.json
 							"raw": "{\n    \"cliente_cpf\": \"111.222.333-00\",\n    \"itens\": [\n      {\n        \"item_id\": \"401e97d9-0065-4f30-bf0f-ac471d33a0c1\",\n        \"quantidade\": 2\n      },\n      {\n        \"item_id\": \"21d0a7d2-88ad-4d98-81d0-2fab0ce8ede8\",\n        \"quantidade\": 1\n      },\n      {\n        \"item_id\": \"670d7b97-e82e-47f4-bb4a-cd3f05865c90\",\n        \"quantidade\": 1\n      }\n    ]\n  }",
+=======
+							"raw": "{\n    \"cliente_cpf\": \"111.222.333-00\",\n    \"itens\": [\n      {\n        \"item_id\": \"21d0a7d2-88ad-4d98-81d0-2fab0ce8ede8\",\n        \"quantidade\": 2\n      }\n    ]\n  }",
+>>>>>>> 1e0725f7ef60a914ad6ee37d705e4886b1057462:docs/postman/backend-fast-food.postman_collection.json
 							"options": {
 								"raw": {
 									"language": "json"
@@ -257,7 +261,7 @@
 							"listen": "prerequest",
 							"script": {
 								"exec": [
-									"pm.environment.set(\"id\", \"1\");"
+									"pm.environment.set(\"id\", \"371a1359-37fe-468c-9f36-b2509fed34e7\");"
 								],
 								"type": "text/javascript"
 							}
@@ -281,13 +285,21 @@
 					"response": []
 				},
 				{
+<<<<<<< HEAD:docs/postman/sistema-clientes-pedidos.postman_collection.json
 					"name": "pedidos/{id}/pagamento",
+=======
+					"name": "{id}/pagamento",
+>>>>>>> 1e0725f7ef60a914ad6ee37d705e4886b1057462:docs/postman/backend-fast-food.postman_collection.json
 					"event": [
 						{
 							"listen": "prerequest",
 							"script": {
 								"exec": [
+<<<<<<< HEAD:docs/postman/sistema-clientes-pedidos.postman_collection.json
 									"pm.environment.set(\"id\", \"af55d9e5-d486-410e-8bdb-c43087b79cbe\");"
+=======
+									"pm.environment.set(\"id\", \"371a1359-37fe-468c-9f36-b2509fed34e7\");"
+>>>>>>> 1e0725f7ef60a914ad6ee37d705e4886b1057462:docs/postman/backend-fast-food.postman_collection.json
 								],
 								"type": "text/javascript"
 							}
@@ -390,7 +402,7 @@
 							"listen": "prerequest",
 							"script": {
 								"exec": [
-									"pm.environment.set(\"id\", \"1\");"
+									"pm.environment.set(\"id\", \"21d0a7d2-88ad-4d98-81d0-2fab0ce8ede8\");"
 								],
 								"type": "text/javascript"
 							}
