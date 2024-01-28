@@ -25,15 +25,12 @@ Para solucionar o problema, a lanchonete irá investir em um sistema de autoaten
 
 Antes de iniciar, certifique-se de ter as seguintes ferramentas instaladas em sua máquina:
 
-
-
+```
 - Docker & Docker Compose
-
+```
 
 
 ## Configuração do Projeto
-
-
 
 1.  **Clone o Repositório:**
 	```bash
@@ -42,18 +39,14 @@ Antes de iniciar, certifique-se de ter as seguintes ferramentas instaladas em su
 	```
 
 
-2. **Instale as Dependências:**
-
-	```bash
-	npm install
-	```
+2. **Suba a aplicação:**
 
 ## Docker
 
 -  **Subir projeto**
 
 	```bash
-	docker-compose -d up
+	docker-compose up
 	```
 - **Desligar Projeto**
 	```bash
