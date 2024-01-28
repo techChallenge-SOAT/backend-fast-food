@@ -147,6 +147,15 @@ Antes de iniciar, certifique-se de ter as seguintes ferramentas instaladas em su
 		localhost:3000/pedidos
 		```
 
+5. **Consultar status pagamento de um pedido**
+	- **Método:** `GET`
+	- **Endpoint:** `/pedidos/{id}/pagamento`
+	- **Exemplo Requisição:**
+
+		```bash
+		localhost:3000/pedidos/{id}/pagamento
+		```
+
 ##  Pagamento
 
  1. **Gerar pagamento pedido**
@@ -228,4 +237,4 @@ Antes de iniciar, certifique-se de ter as seguintes ferramentas instaladas em su
 
 Arquitetura Local
 
-![Desenho da arquitetura do projeto](./k8s/Arquitetura%20On-Premise%20K8S.drawio.png)
+![Desenho da arquitetura do projeto](./docs/kubernetes/Arquitetura%20On-Premise%20K8S.drawio.png)
