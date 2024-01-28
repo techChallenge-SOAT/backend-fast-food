@@ -31,6 +31,7 @@ router.post('/', async (req: Request, res: Response) => {
     !Array.isArray(req.body.itens) ||
     req.body.itens.length === 0
   ) {
+    console.log('req.body.itens', req.body.itens);
     throw new Error('Itens inválidos');
   }
 
