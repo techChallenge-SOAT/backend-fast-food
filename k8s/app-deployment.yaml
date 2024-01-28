@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: app-deployment
 spec:
-  replicas: 1
+  replicas: 3
   selector:
     matchLabels:
       app: backend-fast-food
@@ -33,3 +33,4 @@ spec:
       port: 3000
       targetPort: 3000
   type: NodePort
+  
