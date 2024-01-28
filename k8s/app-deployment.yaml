@@ -24,7 +24,7 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: app-service
+  name: backend-fast-food-service
 spec:
   selector:
     app: backend-fast-food
@@ -32,3 +32,4 @@ spec:
     - protocol: TCP
       port: 3000
       targetPort: 3000
+  type: NodePort
