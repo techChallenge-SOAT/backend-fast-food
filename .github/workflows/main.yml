@@ -11,8 +11,7 @@ on:
         - '**.md'
 
 jobs:
-   build:
-   
+  build:
     runs-on: ubuntu-latest
 
     steps:
@@ -22,3 +21,17 @@ jobs:
         node-version: '16'
     - run: npm ci
     - run: npm test
+
+  deploy-production:
+      runs-on: ubuntu-latest
+
+      if: github.ref == 'refs/heads/main'
+      environment:
+        name: Prod
+      needs: build
+
+      steps:
+        - name: Deploy
+          shell: bash
+          run:
+            echo "Deploy Prod"
