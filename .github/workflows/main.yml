@@ -1,0 +1,36 @@
+name: app-fast-food-pipeline
+
+on:
+  push:
+      branches:
+        - main
+  pull_request:
+      branches:
+        - main
+      paths-ignore:
+        - '**.md'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+    - uses: actions/setup-node@v4
+      with:
+        node-version: '20'
+    - run: npm ci
+
+  deploy-production:
+      runs-on: ubuntu-latest
+
+      if: github.ref == 'refs/heads/main'
+      environment:
+        name: Prod
+      needs: build
+
+      steps:
+        - name: Deploy
+          shell: bash
+          run:
+            echo "Deploy Prod"
