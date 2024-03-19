@@ -227,3 +227,17 @@ Antes de iniciar, certifique-se de ter as seguintes ferramentas instaladas em su
 Arquitetura Local
 
 ![Desenho da arquitetura do projeto](./docs/kubernetes/Arquitetura%20On-Premise%20Final.drawio.png)
+
+## Banco de Dados RDS: Motivação
+
+Decidimos utilizar um banco de dados RDS pelas seguintes vantagens:
+
+Gerenciamento Simplificado: Automatiza tarefas administrativas, reduzindo o esforço manual.
+Alta Disponibilidade: Suporta configurações de failover automático para garantir a continuidade dos serviços.
+Escalabilidade: Permite ajustar facilmente os recursos conforme a demanda.
+Desempenho Otimizado: Oferece opções de configuração para melhorar a eficiência.
+Segurança Robusta: Inclui criptografia, controle de acesso e isolamento de rede.
+Compatibilidade Ampliada: Suporta múltiplos motores de banco de dados populares.
+Custo-Eficiência: Reduz custos com pagamento conforme o uso e sem necessidade de investimentos iniciais.
+Integração com AWS: Facilita a conexão com outros serviços da AWS, promovendo um ecossistema integrado.
+Essas características justificam a escolha do RDS para otimizar operações de banco de dados, focando no desenvolvimento e na entrega de aplicações eficientes.
