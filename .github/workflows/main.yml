@@ -64,11 +64,10 @@ jobs:
       - name: Deploy-AWS
         id: build-image
         env:
+          aws-region: ${{ secrets.AWS_REGION }}
           ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
           ECR_REPOSITORY: backend-fast-food
           IMAGE_TAG: ${{ github.sha }}
-        with:
-          aws-region: ${{ secrets.AWS_REGION }}
         run: |
           docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
           docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
